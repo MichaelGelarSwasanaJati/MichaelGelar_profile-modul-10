@@ -851,3 +851,50 @@ body.dark-mode textarea {
 .hidden {
     display: none !important;
 }
+
+/* Modul 10 B.3 - langlah 2 (kartu artikel)  */
+kartu-artikel { display: block; }
+.kartu { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+
+/* Styling untuk Custom Elements Modul 10 */
+salam-pengguna,
+kartu-artikel {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.kartu {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+
+.kartu h3 {
+    margin-top: 0;
+    color: #ffffff;
+}
+
+.kartu p {
+    color: #cccccc;
+}
+
+.kartu button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-like {
+    background-color: #4f46e5;
+    color: white;
+}
+
+.btn-hapus {
+    background-color: #ef4444;
+    color: white;
+}

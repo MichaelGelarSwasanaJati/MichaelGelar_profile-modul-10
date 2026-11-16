@@ -267,18 +267,32 @@
         </div>
     </div>
 </aside>
+</div>
 
-</main>
+<!-- Section Artikel Blog untuk Modul 10 (Custom Elements) -->
+<section id="artikel-blog" style="padding: 20px;">
+    <h2>Artikel Terbaru</h2>
+    
+    <!-- 1. Indikator Loading -->
+    <div id="loading" style="display: none;">Memuat artikel...</div>
+    
+    <!-- 2. Sapaan Pengguna (Modul 10) -->
+    <salam-pengguna nama="Gelar"></salam-pengguna>
+    
+    <!-- 3. Container untuk menampung daftar artikel dari API -->
+    <div id="container-artikel"></div>
+</section>
+
+</main> <!-- Tag penutup utama <main> yang benar dan pas -->
 
 <footer>
     <p>&copy; 2026 <span>Michael Gelar Swasana Jati</span>. All Rights Reserved.</p>
-
-     <!-- Tombol Reset -->
-    <div class="container">
     
-    <div class="reset-section" style="margin-top: 20px;">
-        <button id="btn-reset" class="btn-danger">Reset Semua Data</button>
-    </div>
+    <!-- Tombol Reset -->
+    <div class="container">
+        <div class="reset-section" style="margin-top: 20px;">
+            <button id="btn-reset" class="btn-danger">Reset Semua Data</button>
+        </div>
     </div>
 </footer>
 
@@ -286,6 +300,7 @@
     <i class="fa-solid fa-arrow-up"></i>
 </a>
 
+<script src="komponen.js"></script>
 <script src="script.js"></script>
-  </body>
+</body>
 </html>

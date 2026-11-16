@@ -237,52 +237,48 @@ if (tombolReset) {
   });
 }
 
-// MODUL 8: FETCH API & JSON
-const containerArtikel = document.querySelector("#container-artikel");
-
-async function muatArtikelDariAPI() {
-  const loading = document.querySelector("#loading");
-  if (loading) loading.style.display = "block"; // Tampilkan loading
-
-  try {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
+/* Modul 10 Custom Elements — Praktikum B.5 Langkah 4: Render Daftar dari API */
+async function muatArtikelModul10() {
+    const wadahArtikel = document.querySelector("#container-artikel");
+    const loading = document.querySelector("#loading");
     
-    // Periksa apakah respons HTTP berhasil
-    if (!response.ok) {
-      throw new Error("Status: " + response.status);
-    }
-    
-    const daftarPost = await response.json();
-    
-    if (containerArtikel) {
-      containerArtikel.innerHTML = ""; // untuk membersihkan kontainer sebelum menambahkan artikel baru
-      daftarPost.forEach((post) => {
-        const article = document.createElement("article");
-        
-        const judul = document.createElement("h3");
-        judul.textContent = post.title;
-        
-        const isi = document.createElement("p");
-        isi.textContent = post.body;
-        
-        article.appendChild(judul);
-        article.appendChild(isi);
-        containerArtikel.appendChild(article);
-      });
-    }
+    if (loading) loading.style.display = "block";
 
-  } catch (error) {
-    if (containerArtikel) {
-      containerArtikel.innerHTML = "<p>Gagal memuat artikel, silakan coba lagi nanti.</p>";
+    try {
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
+        if (!res.ok) throw new Error("Status: " + res.status);
+        const data = await res.json();
+
+        if (wadahArtikel) {
+            wadahArtikel.replaceChildren();
+            data.forEach((post) => {
+                const kartu = document.createElement("kartu-artikel");
+                kartu.setAttribute("judul", post.title);
+                kartu.setAttribute("isi", post.body);
+                wadahArtikel.appendChild(kartu);
+            });
+        }
+    } catch (error) {
+        if (wadahArtikel) {
+            wadahArtikel.innerHTML = "<p>Gagal memuat artikel, silakan coba lagi.</p>";
+        }
+        console.error("Gagal memuat artikel:", error);
+    } finally {
+        if (loading) loading.style.display = "none";
     }
-    console.error("Gagal mengambil data:", error);
-  } finally {
-    if (loading) loading.style.display = "none"; // untuk menyembunyikan loading
-  }
 }
 
-// menjalankan fungsi muatArtikelDariAPI saat halaman dimuat
-muatArtikelDariAPI();
+// Jalankan fungsi saat DOM sudah siap
+document.addEventListener("DOMContentLoaded", () => {
+    muatArtikelModul10();
+});
+
+/* Jalankan langsung, atau tunggu jika dokumen masih memuat */
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", muatArtikelModul10);
+} else {
+    muatArtikelModul10();
+}
 
 // MODUL 8: Data Pengguna untuk Aside
 async function muatProfilPenulis() {
